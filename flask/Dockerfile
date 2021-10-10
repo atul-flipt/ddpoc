@@ -7,4 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "gunicorn", "-w", "4", "-b", "0.0.0.0:5010", "wsgi:app" ]
+RUN apt-get update
+RUN apt-get install -y iproute2
+
+CMD [ "start.sh" ]
