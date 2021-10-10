@@ -8,7 +8,7 @@ const port = 3000
 const tracer = ddtrace.init();
 
 app.get('/', (req, res) => {
-  res.send('DD POC - Node\n')
+  console.log('DD POC - Node\n')
   invoke()
 })
 
