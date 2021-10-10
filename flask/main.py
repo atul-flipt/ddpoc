@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 log.level = logging.INFO
 
 tracer.configure(
-    hostname="localhost",
+    hostname=os.environ.get('DD_AGENT_HOST'),
     port="8126",
 )
 app = Flask(__name__)
