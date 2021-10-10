@@ -7,11 +7,11 @@ import https from 'http'
 
 export default function invoke(){
     console.log("invoking")
-    /*
+    
     const options = {
-        hostname: 'flaskservice.com',
-        port: 443,
-        path: '/ddpoc',
+        hostname: 'localhost',
+        port: 5010,
+        path: '/',
         method: 'GET'
       }
       
@@ -23,9 +23,9 @@ export default function invoke(){
         })
       })
       req.on('error', error => {
-  console.error(error)
-})
+        console.error(error)
+        })
 
-      */
+    
 
 }
