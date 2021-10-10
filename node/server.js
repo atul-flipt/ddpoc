@@ -1,10 +1,15 @@
-const express = require('express')
+import express from 'express';
+import invoke from './service.js';
+import ddtrace from 'dd-trace'
+
 const app = express()
 const port = 3000
-const tracer = require('dd-trace').init();
+
+const tracer = ddtrace.init();
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
+  invoke()
 })
 
 app.listen(port, () => {
