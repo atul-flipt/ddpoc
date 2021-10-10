@@ -1,0 +1,14 @@
+attrs==21.2.0
+click==8.0.1
+ddtrace==0.54.0
+Flask==2.0.2
+gunicorn==20.1.0
+itsdangerous==2.0.1
+Jinja2==3.0.2
+MarkupSafe==2.0.1
+packaging==21.0
+protobuf==3.18.1
+pyparsing==2.4.7
+six==1.16.0
+tenacity==8.0.1
+Werkzeug==2.0.2
