@@ -8,10 +8,10 @@ const port = 3000
 const tracer = ddtrace.init();
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('DD POC - Node\n')
   invoke()
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`listening at http://localhost:${port}`)
 })

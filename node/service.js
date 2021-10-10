@@ -6,7 +6,7 @@ import https from 'http'
 
 
 export default function invoke(){
-    console.log("calling flask @ :5010")
+    console.log("Calling flask @ localhost:5010")
     
     const options = {
         hostname: 'localhost',
