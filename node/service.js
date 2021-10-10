@@ -1,30 +1,16 @@
 
-import https from 'http'
-
-
+ 
+import request from 'request'
 
 
 
 export default function invoke(){
     console.log("Calling flask @ localhost:5010")
-    
-    const options = {
-        hostname: 'localhost',
-        port: 5010,
-        path: '/',
-        method: 'GET'
-      }
-      
-      const req = https.request(options, res => {
-        console.log(`statusCode: ${res.statusCode}`)
-      
-        res.on('data', d => {
-          process.stdout.write(d)
-        })
-      })
-      req.on('error', error => {
-        console.error(error)
-        })
+    request('https://localhost:5010', { json: true }, (err, res, body) => {
+      if (err) { return console.log(err); }
+      console.log(body.url);
+      console.log(body.data);
+    });
 
     
 
