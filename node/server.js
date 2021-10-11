@@ -1,4 +1,5 @@
-import 'dd-trace/init';
+import tracer from 'dd-trace';
+tracer.init(); // initialized in a different file to avoid hoisting.
 import express from 'express';
 import invoke from './service.js';
 
