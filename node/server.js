@@ -3,6 +3,7 @@ tracer.init({
   logInjection: true
 });
 tracer.use('http', { splitByDomain: true });
+import { FORMAT_HTTP_HEADERS } from 'opentracing'
 import express from 'express';
 import invoke from './service.js';
 
@@ -11,8 +12,11 @@ const port = 3000;
 
 app.get('/', (req, res) => {
   console.log('DD POC - Node\n');
-  let invoke_with_trace = tracer.wrap('invoke', invoke)
-  invoke_with_trace(res);
+  const span = tracer.startSpan("span");
+  const headersObj = {};
+  tracer.inject(span, FORMAT_HTTP_HEADERS, headersObj);
+  invoke(res);
+  console.log(headersObj);
 });
 
 app.listen(port, () => {
