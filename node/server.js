@@ -1,5 +1,4 @@
-// This line must come before importing any instrumented module.
-const tracer = require('dd-trace').init()
+import 'dd-trace/init';
 import express from 'express';
 import invoke from './service.js';
 
