@@ -7,6 +7,7 @@ tracer.init({
 import axios from 'axios';
 import express from 'express';
 import expressWinston from 'express-winston';
+import { FORMAT_HTTP_HEADERS } from 'opentracing'
 
 const app = express();
 const port = 3000;
@@ -16,7 +17,12 @@ const invoke = function invoke(r) {
     level: 'info',
     message: "Calling flask @ dockerhost:5010"
   });
-  axios.get('http://dockerhost:5010/').then(function (res) {
+  const span = tracer.startSpan("span");
+  const headers = {};
+  tracer.inject(span, FORMAT_HTTP_HEADERS, headers);
+  axios.get('http://dockerhost:5010/', {
+    headers
+  }).then(function (res) {
     logger.log({
       level: 'info',
       message: res.data
