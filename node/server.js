@@ -4,8 +4,7 @@ tracer.init({
   logInjection: true,
   logger
 });
-tracer.use('http', { splitByDomain: true });
-import http from 'http';
+import axios from 'axios';
 import express from 'express';
 import expressWinston from 'express-winston';
 
@@ -17,23 +16,13 @@ const invoke = function invoke(r) {
     level: 'info',
     message: "Calling flask @ dockerhost:5010"
   });
-  http.get({
-    host: 'dockerhost',
-    port: 5010,
-    path: '/'
-  }, function (res) {
-    var body = '';
-    res.on('data', function (chunk) {
-      body += chunk;
+  axios.get('http://dockerhost:5010/').then(function (body) {
+    logger.log({
+      level: 'info',
+      message: body
     });
-    res.on('end', function () {
-      logger.log({
-        level: 'info',
-        message: body
-      });
-      r.send(body);
-    });
-  }).on('error', function (e) {
+    r.send(body);
+  }).catch(function (e) {
     logger.log({
       level: 'error',
       message: e.message
