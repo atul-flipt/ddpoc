@@ -1,6 +1,7 @@
 from ddtrace import patch_all; patch_all(logging=True)
-from flask import Flask
+from flask import Flask, request
 import os
+import json
 import logging
 from ddtrace import tracer
 
@@ -20,4 +21,4 @@ app = Flask(__name__)
 @app.route('/')
 @tracer.wrap()
 def hello():
-    return "Hello World!"
+    return json.dumps(dict(request.headers))
