@@ -11,6 +11,7 @@ const port = 3000;
 
 app.get('/', (req, res) => {
   console.log('DD POC - Node\n');
+  invoke = tracer.wrap('invoke', invoke)
   invoke(res);
 });
 
