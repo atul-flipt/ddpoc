@@ -20,8 +20,7 @@ const invoke = function invoke(r) {
   http.get({
     host: 'dockerhost',
     port: 5010,
-    path: '/',
-    headers
+    path: '/'
   }, function (res) {
     var body = '';
     res.on('data', function (chunk) {
