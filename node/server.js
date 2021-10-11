@@ -16,10 +16,10 @@ const invoke = function invoke(r) {
     level: 'info',
     message: "Calling flask @ dockerhost:5010"
   });
-  axios.get('http://dockerhost:5010/').then(function (body) {
+  axios.get('http://dockerhost:5010/').then(function (res) {
     logger.log({
       level: 'info',
-      message: body
+      message: res.data
     });
     r.send(body);
   }).catch(function (e) {
