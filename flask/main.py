@@ -10,7 +10,7 @@ FORMAT = ('%(asctime)s %(levelname)s [%(name)s] [%(filename)s:%(lineno)d] '
           '- %(message)s')
 logging.basicConfig(format=FORMAT)
 log = logging.getLogger(__name__)
-log.level = logging.INFO
+log.level = logging.DEBUG
 
 tracer.configure(
     hostname=os.environ.get('DD_AGENT_HOST'),
