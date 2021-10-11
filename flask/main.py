@@ -24,5 +24,5 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    log.debug("flask: received request")
+    logger.debug("flask: received request")
     return json.dumps(dict(request.headers))
