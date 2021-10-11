@@ -21,7 +21,7 @@ const invoke = function invoke(r) {
       level: 'info',
       message: res.data
     });
-    r.send(body);
+    r.send(res.data);
   }).catch(function (e) {
     logger.log({
       level: 'error',
