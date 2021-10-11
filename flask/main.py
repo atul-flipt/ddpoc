@@ -19,6 +19,6 @@ tracer.configure(
 app = Flask(__name__)
 
 @app.route('/')
-@tracer.wrap()
 def hello():
+    log.debug("flask: received request")
     return json.dumps(dict(request.headers))
