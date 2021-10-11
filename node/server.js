@@ -7,8 +7,8 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-  console.log('DD POC - Node\n')
-  invoke()
+  console.log('DD POC - Node\n');
+  invoke(res);
 })
 
 app.listen(port, () => {
